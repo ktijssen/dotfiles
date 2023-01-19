@@ -1,0 +1,81 @@
+# Increase Starship command scan & duration time-outs
+scan_timeout = 80
+command_timeout = 1000
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+format = """
+[  ](bg:#4a4a4a fg:#FFFFFF)[](bg:#4a4a4a fg:#aca9a9)\
+$directory\
+$git_branch\
+$git_status\
+$git_metrics\
+$kubernetes\
+[ ](bg:#000000 fg:#4a4a4a)
+"""
+
+right_format = """
+[](bg:#000000 fg:#4a4a4a)\
+$status\
+$cmd_duration\
+$time
+"""
+
+[fill]
+symbol = " "
+
+[status]
+format = "[ $symbol]($style)"
+style = "bg:#4a4a4a fg:bold red"
+symbol = "[$status ✘ ](bg:#4a4a4a fg:red bold)"
+success_symbol = "[ ](bg:#4a4a4a fg:green bold)"
+disabled = false
+
+[character]
+format = "$symbol"
+success_symbol = "[  ](bg:#4a4a4a green bold)"
+error_symbol = "[ ✘ ](bg:#4a4a4a red bold)"
+
+[cmd_duration]
+format = "[ ](bg:#4a4a4a fg:#aca9a9)[$duration  ]($style)"
+min_time = 200
+style = "bg:#4a4a4a fg:#ef8f0a"
+show_milliseconds = false
+
+[time]
+disabled = false
+style = "bg:#4a4a4a fg:#FFFFFF"
+format = "[ ](bg:#4a4a4a fg:#aca9a9)[$time  ]($style)"
+
+[directory]
+style = "bg:#4a4a4a fg:#03bb51"
+format = "[$path]($style)[ ](bg:#4a4a4a fg:#aca9a9)"
+home_symbol = "   ~"
+read_only = ""
+truncation_symbol = "   ~/"
+truncation_length = 4
+truncate_to_repo = true
+
+[git_branch]
+symbol = " "
+format = "[ $symbol$branch]($style)"
+style = "bg:#4a4a4a fg:#ef8f0a"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+style = "bg:#4a4a4a fg:#ef8f0a"
+
+[git_metrics]
+disabled = false
+format = "[$added]($added_style)[ ](bg:#4a4a4a)"
+added_style = "bg:#4a4a4a fg:#ef8f0a"
+
+[kubernetes]
+disabled = false
+style = "bg:#4a4a4a fg:#0ac6ef"
+symbol = "[⎈ ](bg:#4a4a4a fg:#0ac6ef)"
+format = '[ $symbol$context( \($namespace\)) ]($style)'
+[kubernetes.context_aliases]
+".*/api-bro-prd-gdnnet-lan:6443/.*" = "production"
+".*/api.bro-dev.gdnnet.lan:6443/.*" = "development"
