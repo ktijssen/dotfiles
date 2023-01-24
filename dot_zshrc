@@ -1,4 +1,5 @@
 [[ -f ~/.zsh/oh-my-zsh.zsh ]] && source ~/.zsh/oh-my-zsh.zsh
+[[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
 
 # Load Starship
-eval "source <(/usr/local/bin/starship init zsh --print-full-init)"
+eval "source <(starship init zsh --print-full-init)"
