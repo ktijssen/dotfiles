@@ -71,6 +71,12 @@ disabled = false
 format = "[$added]($added_style)[ ](bg:#4a4a4a)"
 added_style = "bg:#4a4a4a fg:#ef8f0a"
 
+[hostname]
+ssh_only = false
+format = '$hostname'
+trim_at = '.kevintijssen.eu'
+disabled = false
+
 [kubernetes]
 disabled = false
 style = "bg:#4a4a4a fg:#0ac6ef"

@@ -12,8 +12,16 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+    direnv
+    docker
+    git
+    helm
+    kube-ps1
+    kubectl
+    terraform
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+)
 
 source $ZSH/oh-my-zsh.sh
-
-eval "source <(/usr/local/bin/starship init zsh --print-full-init)"
