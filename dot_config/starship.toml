@@ -6,20 +6,19 @@ command_timeout = 1000
 add_newline = false
 
 format = """
-[  ](bg:#4a4a4a fg:#FFFFFF)[](bg:#4a4a4a fg:#aca9a9)\
+╭─\
+[ $os$hostname ](bg:#4a4a4a fg:#FFFFFF)[](bg:#4a4a4a fg:#aca9a9)\
 $directory\
 $git_branch\
 $git_status\
 $git_metrics\
 $kubernetes\
-[ ](bg:#000000 fg:#4a4a4a)
-"""
-
-right_format = """
-[](bg:#000000 fg:#4a4a4a)\
 $status\
-$cmd_duration\
-$time
+[ ](fg:#4a4a4a)\
+$fill\
+$line_break\
+╰─\
+[ ](bold green)
 """
 
 [fill]
@@ -29,12 +28,12 @@ symbol = " "
 format = "[ $symbol]($style)"
 style = "bg:#4a4a4a fg:bold red"
 symbol = "[$status ✘ ](bg:#4a4a4a fg:red bold)"
-success_symbol = "[ ](bg:#4a4a4a fg:green bold)"
+success_symbol = "[󰄬 ](bg:#4a4a4a fg:green bold)"
 disabled = false
 
 [character]
 format = "$symbol"
-success_symbol = "[  ](bg:#4a4a4a green bold)"
+success_symbol = "[ 󰄬 ](bg:#4a4a4a green bold)"
 error_symbol = "[ ✘ ](bg:#4a4a4a red bold)"
 
 [cmd_duration]
@@ -51,11 +50,11 @@ format = "[ ](bg:#4a4a4a fg:#aca9a9)[$time  ]($style)"
 [directory]
 style = "bg:#4a4a4a fg:#03bb51"
 format = "[$path]($style)[ ](bg:#4a4a4a fg:#aca9a9)"
-home_symbol = "   ~"
+home_symbol = "  ~"
 read_only = ""
-truncation_symbol = "   ~/"
-truncation_length = 4
-truncate_to_repo = true
+truncation_symbol = "  ~/"
+truncation_length = 99
+truncate_to_repo = false
 
 [git_branch]
 symbol = " "
@@ -63,25 +62,47 @@ format = "[ $symbol$branch]($style)"
 style = "bg:#4a4a4a fg:#ef8f0a"
 
 [git_status]
-format = '([\[$all_status$ahead_behind\]]($style))'
+format = '([ | $all_status$ahead_behind]($style))[](bg:#4a4a4a fg:#aca9a9)'
 style = "bg:#4a4a4a fg:#ef8f0a"
+conflicted = '[ confliced=${count}](bg:#4a4a4ared) '
+up_to_date = '[ up-to-date](bg:#4a4a4a fg:#ef8f0a) '
+untracked = '[ untracked=${count}](bg:#4a4a4a red) '
+ahead = ' ahead=${count}'
+diverged = ' ahead=${ahead_count}  behind=${behind_count}'
+behind = ' behind=${count}'
+stashed = '[ stashed=${count}](bg:#4a4a4a green) '
+modified = '[󰛿 modified=${count}](bg:#4a4a4a yellow) '
+staged = '[󰐗 staged=${count}](bg:#4a4a4a green) '
+renamed = '[󱍸 renamed=${count}](bg:#4a4a4a yellow) '
+deleted = '[󰍶 deleted=${count}](bg:#4a4a4a red) '
 
 [git_metrics]
-disabled = false
+disabled = true
 format = "[$added]($added_style)[ ](bg:#4a4a4a)"
 added_style = "bg:#4a4a4a fg:#ef8f0a"
 
 [hostname]
 ssh_only = false
-format = '$hostname'
-trim_at = '.kevintijssen.eu'
+format = ' $hostname'
+trim_at = '.local'
 disabled = false
 
 [kubernetes]
 disabled = false
 style = "bg:#4a4a4a fg:#0ac6ef"
 symbol = "[⎈ ](bg:#4a4a4a fg:#0ac6ef)"
-format = '[ $symbol$context( \($namespace\)) ]($style)'
+format = '[ $symbol$context( \($namespace\))]($style)[ ](bg:#4a4a4a fg:#aca9a9)'
 [kubernetes.context_aliases]
 ".*/api-bro-prd-gdnnet-lan:6443/.*" = "production"
 ".*/api.bro-dev.gdnnet.lan:6443/.*" = "development"
+
+[line_break]
+
+[os]
+format = '[$symbol](bg:#4a4a4a bold white)'   
+disabled = false
+
+[os.symbols]
+Windows = ' '
+Ubuntu = ''
+Macos = ''
