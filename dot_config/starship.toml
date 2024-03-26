@@ -10,12 +10,17 @@ format = """
 [ $os$hostname ](bg:#4a4a4a fg:#FFFFFF)[](bg:#4a4a4a fg:#aca9a9)\
 $directory\
 $git_branch\
+$git_commit\
 $git_status\
 $git_metrics\
 $kubernetes\
-$status\
-[ ](fg:#4a4a4a)\
+[ ](bg:#4a4a4a)\
+[](fg:#4a4a4a)\
 $fill\
+[](fg:#4a4a4a)\
+$status\
+$cmd_duration\
+$time \
 $line_break\
 ╰─\
 [ ](bold green)
@@ -61,6 +66,13 @@ symbol = " "
 format = "[ $symbol$branch]($style)"
 style = "bg:#4a4a4a fg:#ef8f0a"
 
+[git_commit]
+format = '[\($hash\)]($style)'
+style = 'bg:#4a4a4a fg:#ef8f0a'
+commit_hash_length = 7
+disabled = false
+only_detached = false
+
 [git_status]
 format = '([ | $all_status$ahead_behind]($style))[](bg:#4a4a4a fg:#aca9a9)'
 style = "bg:#4a4a4a fg:#ef8f0a"
@@ -97,6 +109,7 @@ format = '[ $symbol$context( \($namespace\))]($style)[ ](bg:#4a4a4a fg:#aca9a
 ".*/api.bro-dev.gdnnet.lan:6443/.*" = "development"
 
 [line_break]
+disabled = false
 
 [os]
 format = '[$symbol](bg:#4a4a4a bold white)'   
