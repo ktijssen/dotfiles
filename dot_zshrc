@@ -1,5 +1,12 @@
+SHELL=/usr/bin/zsh
+
+
 [[ -f ~/.zsh/oh-my-zsh.zsh ]] && source ~/.zsh/oh-my-zsh.zsh
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
 
-# Load Starship
-eval "source <(starship init zsh --print-full-init)"
+### bling.sh source start
+test -f ~/.zsh/custom-bling.sh && source ~/.zsh/custom-bling.sh
+### bling.sh source end
+
+
+

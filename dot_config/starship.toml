@@ -7,7 +7,7 @@ add_newline = false
 
 format = """
 ╭─\
-[ $os$hostname ](bg:#4a4a4a fg:#FFFFFF)[](bg:#4a4a4a fg:#aca9a9)\
+[ $os ](bg:#4a4a4a fg:#FFFFFF)[](bg:#4a4a4a fg:#aca9a9)\
 $directory\
 $git_branch\
 $git_commit\
@@ -119,3 +119,4 @@ disabled = false
 Windows = ' '
 Ubuntu = ''
 Macos = ''
+Linux = '󰣛'

@@ -1,6 +1,8 @@
 ### ALIASES ###
 
 alias k="kubectl"
+alias kx="kubectl ctx"
+alias kx-="kubectl config unset current-context"
 
 # Git Folders
 alias github="cd ~/git/github.com"
@@ -19,4 +21,4 @@ alias ls="eza --icons --group-directories-first"
 alias ll="eza --icons --group-directories-first -l"
 
 # VSCode
-alias code="open -a 'Visual Studio Code'"
+#alias code="open -a 'Visual Studio Code'"
