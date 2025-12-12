@@ -1,0 +1,5 @@
+# views.yml
+k9s:
+  views:
+    v1/pods:
+      sortColumn: STATUS:desc => use :asc or :desc

@@ -1,0 +1,10 @@
+[user]
+        name = Kevin Tijssen
+        email = kevin.tijssen@siderolabs.com
+        signingkey = A38EB999541F50E3F141711FCE4BDA08F601B1F5
+
+[gpg]
+        program = /usr/bin/gpg
+
+[commit]
+        gpgsign = true

@@ -7,7 +7,7 @@ add_newline = false
 
 format = """
 ╭─\
-[ $os ](bg:#4a4a4a fg:#FFFFFF)[](bg:#4a4a4a fg:#aca9a9)\
+[ $os](bg:#4a4a4a fg:#FFFFFF)[](bg:#4a4a4a fg:#aca9a9)\
 $directory\
 $git_branch\
 $git_commit\
@@ -104,9 +104,14 @@ disabled = false
 style = "bg:#4a4a4a fg:#0ac6ef"
 symbol = "[⎈ ](bg:#4a4a4a fg:#0ac6ef)"
 format = '[ $symbol$context( \($namespace\))]($style)[ ](bg:#4a4a4a fg:#aca9a9)'
-[kubernetes.context_aliases]
-".*/api-bro-prd-gdnnet-lan:6443/.*" = "production"
-".*/api.bro-dev.gdnnet.lan:6443/.*" = "development"
+[[kubernetes.contexts]]
+context_pattern = "onprem-omni-stage-pnap"
+context_alias = " STAGE-PNAP "
+style = "bg:#4a4a4a bold red"
+[[kubernetes.contexts]]
+context_pattern = "onprem-omni-stage"
+context_alias = " STAGE "
+style = "bg:#4a4a4a bold red"
 
 [line_break]
 disabled = false

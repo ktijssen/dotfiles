@@ -1,0 +1,13 @@
+# This is Git's per-user configuration file.
+
+# default to sidero config
+[includeIf "gitdir:~/git/github.com/ktijssen/**"]
+        path = ~/.gitconfig.sidero
+
+# default to sidero config
+[includeIf "gitdir:~/git/github.com/siderolabs/**"]
+        path = ~/.gitconfig.sidero
+        
+[user]
+	name = Kevin Tijssen
+	email = kevin.tijssen@gmail.com

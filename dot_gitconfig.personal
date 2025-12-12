@@ -1,0 +1,12 @@
+# This is Git's per-user configuration file.
+[user]
+        name = Kevin Tijssen
+        email = kevin.tijssen@truefullstaq.com
+        signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAQm+rHlcFUZ0IC0Quj9XWA+C1hOZX6V5+OP5yLwWX9C
+
+[gpg]
+        format = ssh
+
+[commit]
+	gpgsign = true
+        

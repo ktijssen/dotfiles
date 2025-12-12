@@ -22,3 +22,24 @@ alias ll="eza --icons --group-directories-first -l"
 
 # VSCode
 #alias code="open -a 'Visual Studio Code'"
+
+alias yubi="sudo systemctl restart pcscd"
+
+## use bat instead of cat
+if command -v bat > /dev/null ; then
+  alias cat="bat"
+fi
+
+if command -v carapace > /dev/null; then
+  export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+  zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+  source <(carapace _carapace)
+fi
+
+if command -v talosctl > /dev/null; then
+  source <(talosctl completion zsh)
+fi
+
+if command -v omnictl > /dev/null; then
+  source <(omnictl completion zsh)
+fi
