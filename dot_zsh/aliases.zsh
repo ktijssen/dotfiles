@@ -1,14 +1,14 @@
 ### ALIASES ###
 
 alias k="kubectl"
-alias kx="kubectl ctx"
+alias kx="SHELL= kubectl ctx"
 alias kx-="kubectl config unset current-context"
 
 # Git Folders
 alias github="cd ~/git/github.com"
 alias gitlab="cd ~/git/gitlab-deploy.kevintijssen.eu"
 alias gitazure="cd ~/git/dev.azure.com"
-alias gitfq="cd ~/git/git.fullstaq.com"
+alias git-commit="task --dir ~/.task commit"
 
 # Krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
@@ -16,14 +16,23 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # Random String
 alias randomstring="tr -dc A-Za-z0-9 </dev/urandom | head -c 24; echo"
 
+# Open Files
+alias file="xdg-open"
+
+# TempDir
+alias tmp="cd $(mktemp -d)"
+
+# Taskfile Install
+alias upgrade="task --dir ~/.task"
+
+# Dell VPN
+alias dell-vpn-up="sudo -E gpclient connect ausvpn.connect.dellcsc.com --csd-wrapper /nix/store/wxc4gqykwy09drvx13fxvlslp6wwb8mr-gpclient-2.5.1/libexec/gpclient/hipreport.sh --browser remote"
+
 # Eza
-alias ls="eza --icons --group-directories-first"
-alias ll="eza --icons --group-directories-first -l"
-
-# VSCode
-#alias code="open -a 'Visual Studio Code'"
-
-alias yubi="sudo systemctl restart pcscd"
+if command -v eza > /dev/null ; then
+  alias ls="eza --icons --group-directories-first"
+  alias ll="eza --icons --group-directories-first -l"
+fi
 
 ## use bat instead of cat
 if command -v bat > /dev/null ; then
@@ -43,3 +52,13 @@ fi
 if command -v omnictl > /dev/null; then
   source <(omnictl completion zsh)
 fi
+
+if command -v airlock > /dev/null; then
+  source <(airlock completion zsh)
+fi
+
+if command -v fzf-share >/dev/null; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
+fi
+

@@ -3,6 +3,8 @@ SHELL=/usr/bin/zsh
 
 [[ -f ~/.zsh/oh-my-zsh.zsh ]] && source ~/.zsh/oh-my-zsh.zsh
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
+[[ -f ~/.zsh/nixos.zsh ]] && source ~/.zsh/nixos.zsh
+[[ -f ~/.zsh/omnictl.zsh ]] && source ~/.zsh/omnictl.zsh
 
 ### bling.sh source start
 test -f ~/.zsh/custom-bling.sh && source ~/.zsh/custom-bling.sh

@@ -3,11 +3,15 @@
 # default to sidero config
 [includeIf "gitdir:~/git/github.com/ktijssen/**"]
         path = ~/.gitconfig.sidero
-
-# default to sidero config
+[includeIf "gitdir:~/git/github.com/kevintijssen/**"]
+        path = ~/.gitconfig.sidero
 [includeIf "gitdir:~/git/github.com/siderolabs/**"]
         path = ~/.gitconfig.sidero
-        
-[user]
-	name = Kevin Tijssen
-	email = kevin.tijssen@gmail.com
+[credential "https://github.com"]
+	helper = 
+	helper = !/run/current-system/sw/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/run/current-system/sw/bin/gh auth git-credential
+[push]
+	autoSetupRemote = true

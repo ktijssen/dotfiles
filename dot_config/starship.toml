@@ -14,6 +14,8 @@ $git_commit\
 $git_status\
 $git_metrics\
 $kubernetes\
+${custom.talosconfig}\
+${custom.omniconfig}\
 [ ](bg:#4a4a4a)\
 [](fg:#4a4a4a)\
 $fill\
@@ -27,7 +29,8 @@ $line_break\
 """
 
 [fill]
-symbol = " "
+symbol = "─"
+style = "fg:#aca9a9"
 
 [status]
 format = "[ $symbol]($style)"
@@ -57,8 +60,8 @@ style = "bg:#4a4a4a fg:#03bb51"
 format = "[$path]($style)[ ](bg:#4a4a4a fg:#aca9a9)"
 home_symbol = "  ~"
 read_only = ""
-truncation_symbol = "  ~/"
-truncation_length = 99
+truncation_symbol = "  ~/../"
+truncation_length = 2
 truncate_to_repo = false
 
 [git_branch]
@@ -117,6 +120,7 @@ style = "bg:#4a4a4a bold red"
 disabled = false
 
 [os]
+#format = '[NixOS](bg:#4a4a4a bold white)'   
 format = '[$symbol](bg:#4a4a4a bold white)'   
 disabled = false
 
@@ -125,3 +129,22 @@ Windows = ' '
 Ubuntu = ''
 Macos = ''
 Linux = '󰣛'
+NixOS = ''
+
+[custom.talosconfig]
+description = "Shows the current Talos context"
+command = '''talosctl config info 2>/dev/null | awk '/^Current context:/ {print $3}' '''
+when = '''command -v talosctl >/dev/null 2>&1'''
+symbol = " "
+style = "bg:#4a4a4a fg:#c678dd"
+format = '[ $symbol$output]($style)[ ](bg:#4a4a4a fg:#aca9a9)'
+shell = ["bash", "--noprofile", "--norc"]
+
+[custom.omniconfig]
+description = "Shows the current Omni context"
+command = '''omnictl config info 2>/dev/null | awk '/^Current context:/ {print $3}' '''
+when = '''command -v omnictl >/dev/null 2>&1'''
+symbol = "󰏉 "
+style = "bg:#4a4a4a fg:#56b6c2"
+format = '[ $symbol$output]($style)[ ](bg:#4a4a4a fg:#aca9a9)'
+shell = ["bash", "--noprofile", "--norc"]
